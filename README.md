@@ -1,4 +1,4 @@
-# ruby-zooomr-api
+# ruby-zooomr-api -- ARCHIVED
 
 ## What is it?
 An implementation of the API for the photosharing service Zooomr (http://www.zooomr.com), this particular implementation is in Ruby
