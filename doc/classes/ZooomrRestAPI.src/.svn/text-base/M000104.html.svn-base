@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>params_are_valid (ZooomrRestAPI)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File Zooomr.rb, line 264</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-constant">ZooomrRestAPI</span>.<span class="ruby-identifier">params_are_valid</span>(<span class="ruby-identifier">a_array_of_required_params</span>, <span class="ruby-identifier">a_array_of_extra_allowed_param_names</span>, <span class="ruby-identifier">a_hash_of_params_and_values</span>)
+    
+    <span class="ruby-keyword kw">if</span> ( <span class="ruby-keyword kw">nil</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">a_array_of_required_params</span> )
+      <span class="ruby-identifier">a_array_of_required_params</span> = ()
+    <span class="ruby-keyword kw">end</span>
+    
+    <span class="ruby-comment cmt"># get the keys</span>
+    <span class="ruby-identifier">array_of_passed_params</span> = ()
+    <span class="ruby-keyword kw">unless</span>( <span class="ruby-keyword kw">nil</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">a_hash_of_params_and_values</span> )
+      <span class="ruby-identifier">array_of_passed_params</span> = <span class="ruby-identifier">a_hash_of_params_and_values</span>.<span class="ruby-identifier">keys</span>  
+    <span class="ruby-keyword kw">end</span>
+    
+    <span class="ruby-keyword kw">unless</span> ( <span class="ruby-keyword kw">nil</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">a_array_of_required_params</span> )
+      <span class="ruby-identifier">a_array_of_required_params</span>.<span class="ruby-identifier">sort</span>
+      
+      <span class="ruby-comment cmt"># check that all the required params are in the hash</span>
+      <span class="ruby-identifier">missing_required_params</span> = <span class="ruby-identifier">a_array_of_required_params</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">array_of_passed_params</span>
+      
+      <span class="ruby-keyword kw">unless</span> (<span class="ruby-identifier">missing_required_params</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>)
+        <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-value str">&quot;Zooomr::params_are_valid missing  required parameter(s)&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">missing_required_params</span>.<span class="ruby-identifier">join</span>(<span class="ruby-value str">&quot;, &quot;</span>) <span class="ruby-operator">+</span> <span class="ruby-value str">&quot; was passed: &quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">a_hash_of_params_and_values</span>.<span class="ruby-identifier">to_s</span> ,
+        <span class="ruby-identifier">caller</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span>
+    
+    <span class="ruby-keyword kw">if</span> ( <span class="ruby-keyword kw">nil</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">a_hash_of_params_and_values</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-keyword kw">nil</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">a_array_of_extra_allowed_param_names</span>)
+      <span class="ruby-comment cmt"># don't worry about it if they're both nil</span>
+    <span class="ruby-keyword kw">elsif</span>( (<span class="ruby-operator">!</span><span class="ruby-keyword kw">nil</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">a_array_of_extra_allowed_param_names</span>) )
+      <span class="ruby-comment cmt"># check that there aren't any extra ones we weren't expecting</span>
+      <span class="ruby-identifier">a_array_of_extra_allowed_param_names</span>.<span class="ruby-identifier">sort</span>
+      
+      <span class="ruby-comment cmt"># make sure we've removed the mandatory ones</span>
+      <span class="ruby-identifier">extra_params</span> = <span class="ruby-identifier">array_of_passed_params</span>
+      <span class="ruby-keyword kw">unless</span>( <span class="ruby-keyword kw">nil</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">a_array_of_required_params</span> )
+        <span class="ruby-identifier">extra_params</span> = <span class="ruby-identifier">array_of_passed_params</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">a_array_of_required_params</span>
+      <span class="ruby-keyword kw">end</span>
+      
+      <span class="ruby-identifier">extra_params</span>.<span class="ruby-identifier">sort</span>
+      
+      <span class="ruby-identifier">unrecognised_params</span> = <span class="ruby-identifier">extra_params</span> <span class="ruby-operator">-</span> <span class="ruby-identifier">a_array_of_extra_allowed_param_names</span>
+      
+      <span class="ruby-keyword kw">unless</span> (<span class="ruby-value">0</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">unrecognised_params</span>.<span class="ruby-identifier">length</span>)
+        <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>,
+        <span class="ruby-value str">&quot;Zooomr::params_are_valid unrecognised parameter(s) &quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">unrecognised_params</span>.<span class="ruby-identifier">join</span>(<span class="ruby-value str">&quot;, &quot;</span>),
+        <span class="ruby-identifier">caller</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

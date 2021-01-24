@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>new (ZooomrPhotosetsRuleSetGeoTags)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File svn/ruby-zooomr-api/Zooomr.Photosets.RuleSet.GeoTags.rb, line 22</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">a_parameter_hash</span>)
+      
+    <span class="ruby-identifier">required_params</span> = [<span class="ruby-value str">'lat'</span>, <span class="ruby-value str">'lon'</span>]
+    <span class="ruby-identifier">optional_params</span> = [<span class="ruby-value str">'map_zooom_level'</span>]
+    
+    <span class="ruby-constant">ZooomrPhotosetsRuleSet</span>.<span class="ruby-identifier">params_are_valid</span>(<span class="ruby-identifier">required_params</span>, <span class="ruby-identifier">optional_params</span>, <span class="ruby-identifier">a_parameter_hash</span>)
+    
+    <span class="ruby-keyword kw">if</span> ( <span class="ruby-operator">!</span> <span class="ruby-identifier">a_parameter_hash</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-value str">'map_zoom_level'</span>) )
+      <span class="ruby-identifier">a_parameter_hash</span>[<span class="ruby-value str">'map_zoom_level'</span>] = <span class="ruby-value">3</span>
+    <span class="ruby-keyword kw">end</span>
+    <span class="ruby-identifier">params</span> = {}
+    <span class="ruby-identifier">params</span> = <span class="ruby-identifier">params</span>.<span class="ruby-identifier">merge</span>(<span class="ruby-identifier">a_parameter_hash</span>)
+    
+    <span class="ruby-ivar">@match_test</span> = <span class="ruby-value str">&quot;0&quot;</span> <span class="ruby-comment cmt"># no match constant for GeoTags</span>
+    <span class="ruby-ivar">@match_type</span> = <span class="ruby-constant">ZooomrPhotosetsRuleSet</span><span class="ruby-operator">::</span><span class="ruby-constant">PHOTOSETMATCH_GEO</span>
+    <span class="ruby-ivar">@match_args</span> = <span class="ruby-value str">&quot;&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">a_parameter_hash</span>[<span class="ruby-value str">'lat'</span>].<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-value str">&quot;,&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">a_parameter_hash</span>[<span class="ruby-value str">'lon'</span>].<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-value str">&quot;,&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">a_parameter_hash</span>[<span class="ruby-value str">'map_zooom_level'</span>].<span class="ruby-identifier">to_s</span>
+  <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

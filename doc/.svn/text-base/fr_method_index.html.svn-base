@@ -1,0 +1,210 @@
+
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<!--
+
+    Methods
+
+  -->
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Methods</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="rdoc-style.css" type="text/css" />
+  <base target="docwin" />
+</head>
+<body>
+<div id="index">
+  <h1 class="section-bar">Methods</h1>
+  <div id="index-entries">
+    <a href="classes/ZooomrResponse.html#M000085">== (ZooomrResponse)</a><br />
+    <a href="classes/ZooomrResponse.html#M000079">== (ZooomrResponse)</a><br />
+    <a href="classes/ZooomrPhotosNotes.html#M000142">add (ZooomrPhotosNotes)</a><br />
+    <a href="classes/ZooomrPhotosNotes.html#M000146">add (ZooomrPhotosNotes)</a><br />
+    <a href="classes/ZooomrFavorites.html#M000162">add (ZooomrFavorites)</a><br />
+    <a href="classes/ZooomrFavorites.html#M000166">add (ZooomrFavorites)</a><br />
+    <a href="classes/ZooomrPhotosComments.html#M000055">addComment (ZooomrPhotosComments)</a><br />
+    <a href="classes/ZooomrPhotosComments.html#M000050">addComment (ZooomrPhotosComments)</a><br />
+    <a href="classes/ZooomrPhotosetsRuleSet.html#M000157">addRule (ZooomrPhotosetsRuleSet)</a><br />
+    <a href="classes/ZooomrPhotosetsRuleSet.html#M000154">addRule (ZooomrPhotosetsRuleSet)</a><br />
+    <a href="classes/ZooomrPhotos.html#M000109">addTags (ZooomrPhotos)</a><br />
+    <a href="classes/ZooomrPhotos.html#M000122">addTags (ZooomrPhotos)</a><br />
+    <a href="classes/ZooomrRestAPI.html#M000091">authenticate_application (ZooomrRestAPI)</a><br />
+    <a href="classes/ZooomrRestAPI.html#M000100">authenticate_application (ZooomrRestAPI)</a><br />
+    <a href="classes/ZooomrRestAPI.html#M000089">call_method (ZooomrRestAPI)</a><br />
+    <a href="classes/ZooomrRestAPI.html#M000098">call_method (ZooomrRestAPI)</a><br />
+    <a href="classes/ZooomrRestAPI.html#M000099">call_post_method (ZooomrRestAPI)</a><br />
+    <a href="classes/ZooomrRestAPI.html#M000090">call_post_method (ZooomrRestAPI)</a><br />
+    <a href="classes/ZooomrAuth.html#M000038">checkToken (ZooomrAuth)</a><br />
+    <a href="classes/ZooomrAuth.html#M000034">checkToken (ZooomrAuth)</a><br />
+    <a href="classes/ZooomrRestAPI.html#M000092">complete_authentication (ZooomrRestAPI)</a><br />
+    <a href="classes/ZooomrRestAPI.html#M000101">complete_authentication (ZooomrRestAPI)</a><br />
+    <a href="classes/ZooomrPhotosets.html#M000012">create (ZooomrPhotosets)</a><br />
+    <a href="classes/ZooomrPhotosets.html#M000019">create (ZooomrPhotosets)</a><br />
+    <a href="classes/ZooomrRestAPI.html#M000093">create_login_link (ZooomrRestAPI)</a><br />
+    <a href="classes/ZooomrRestAPI.html#M000102">create_login_link (ZooomrRestAPI)</a><br />
+    <a href="classes/ZooomrRestAPI.html#M000088">create_signature (ZooomrRestAPI)</a><br />
+    <a href="classes/ZooomrRestAPI.html#M000097">create_signature (ZooomrRestAPI)</a><br />
+    <a href="classes/ZooomrPhotosNotes.html#M000144">delete (ZooomrPhotosNotes)</a><br />
+    <a href="classes/ZooomrPhotosets.html#M000013">delete (ZooomrPhotosets)</a><br />
+    <a href="classes/ZooomrPhotos.html#M000110">delete (ZooomrPhotos)</a><br />
+    <a href="classes/ZooomrPhotosNotes.html#M000148">delete (ZooomrPhotosNotes)</a><br />
+    <a href="classes/ZooomrPhotos.html#M000123">delete (ZooomrPhotos)</a><br />
+    <a href="classes/ZooomrPhotosets.html#M000020">delete (ZooomrPhotosets)</a><br />
+    <a href="classes/ZooomrPhotosComments.html#M000051">deleteComment (ZooomrPhotosComments)</a><br />
+    <a href="classes/ZooomrPhotosComments.html#M000056">deleteComment (ZooomrPhotosComments)</a><br />
+    <a href="classes/ZooomrTest.html#M000070">echo (ZooomrTest)</a><br />
+    <a href="classes/ZooomrTest.html#M000073">echo (ZooomrTest)</a><br />
+    <a href="classes/ZooomrPhotosets.html#M000021">edit (ZooomrPhotosets)</a><br />
+    <a href="classes/ZooomrPhotosets.html#M000014">edit (ZooomrPhotosets)</a><br />
+    <a href="classes/ZooomrPhotosNotes.html#M000143">edit (ZooomrPhotosNotes)</a><br />
+    <a href="classes/ZooomrPhotosNotes.html#M000147">edit (ZooomrPhotosNotes)</a><br />
+    <a href="classes/ZooomrPhotosComments.html#M000057">editComment (ZooomrPhotosComments)</a><br />
+    <a href="classes/ZooomrPhotosComments.html#M000052">editComment (ZooomrPhotosComments)</a><br />
+    <a href="classes/ZooomrResponse.html#M000082">eql (ZooomrResponse)</a><br />
+    <a href="classes/ZooomrResponse.html#M000076">eql (ZooomrResponse)</a><br />
+    <a href="classes/ZooomrResponse.html#M000083">eql? (ZooomrResponse)</a><br />
+    <a href="classes/ZooomrResponse.html#M000077">eql? (ZooomrResponse)</a><br />
+    <a href="classes/ZooomrResponse.html#M000084">equal (ZooomrResponse)</a><br />
+    <a href="classes/ZooomrResponse.html#M000078">equal (ZooomrResponse)</a><br />
+    <a href="classes/ZooomrPhotos.html#M000111">getContext (ZooomrPhotos)</a><br />
+    <a href="classes/ZooomrPhotos.html#M000124">getContext (ZooomrPhotos)</a><br />
+    <a href="classes/ZooomrPhotos.html#M000112">getFavorites (ZooomrPhotos)</a><br />
+    <a href="classes/ZooomrPhotos.html#M000125">getFavorites (ZooomrPhotos)</a><br />
+    <a href="classes/ZooomrAuth.html#M000036">getFrob (ZooomrAuth)</a><br />
+    <a href="classes/ZooomrAuth.html#M000032">getFrob (ZooomrAuth)</a><br />
+    <a href="classes/ZooomrPeople.html#M000171">getInfo (ZooomrPeople)</a><br />
+    <a href="classes/ZooomrPeople.html#M000176">getInfo (ZooomrPeople)</a><br />
+    <a href="classes/ZooomrGroups.html#M000042">getInfo (ZooomrGroups)</a><br />
+    <a href="classes/ZooomrPhotosets.html#M000022">getInfo (ZooomrPhotosets)</a><br />
+    <a href="classes/ZooomrPhotosets.html#M000015">getInfo (ZooomrPhotosets)</a><br />
+    <a href="classes/ZooomrGroups.html#M000040">getInfo (ZooomrGroups)</a><br />
+    <a href="classes/ZooomrZipline.html#M000061">getLine (ZooomrZipline)</a><br />
+    <a href="classes/ZooomrZipline.html#M000064">getLine (ZooomrZipline)</a><br />
+    <a href="classes/ZooomrPhotosComments.html#M000058">getList (ZooomrPhotosComments)</a><br />
+    <a href="classes/ZooomrContacts.html#M000026">getList (ZooomrContacts)</a><br />
+    <a href="classes/ZooomrPhotosets.html#M000023">getList (ZooomrPhotosets)</a><br />
+    <a href="classes/ZooomrContacts.html#M000029">getList (ZooomrContacts)</a><br />
+    <a href="classes/ZooomrPhotosComments.html#M000053">getList (ZooomrPhotosComments)</a><br />
+    <a href="classes/ZooomrPhotosets.html#M000016">getList (ZooomrPhotosets)</a><br />
+    <a href="classes/ZooomrFavorites.html#M000163">getList (ZooomrFavorites)</a><br />
+    <a href="classes/ZooomrFavorites.html#M000167">getList (ZooomrFavorites)</a><br />
+    <a href="classes/ZooomrTags.html#M000004">getListPhoto (ZooomrTags)</a><br />
+    <a href="classes/ZooomrTags.html#M000007">getListPhoto (ZooomrTags)</a><br />
+    <a href="classes/ZooomrTags.html#M000008">getListUser (ZooomrTags)</a><br />
+    <a href="classes/ZooomrTags.html#M000005">getListUser (ZooomrTags)</a><br />
+    <a href="classes/ZooomrPhotosets.html#M000017">getPhotos (ZooomrPhotosets)</a><br />
+    <a href="classes/ZooomrPeople.html#M000175">getPhotos (ZooomrPeople)</a><br />
+    <a href="classes/ZooomrPhotosets.html#M000024">getPhotos (ZooomrPhotosets)</a><br />
+    <a href="classes/ZooomrPeople.html#M000170">getPhotos (ZooomrPeople)</a><br />
+    <a href="classes/ZooomrPeople.html#M000177">getPublicGroups (ZooomrPeople)</a><br />
+    <a href="classes/ZooomrPeople.html#M000172">getPublicGroups (ZooomrPeople)</a><br />
+    <a href="classes/ZooomrContacts.html#M000027">getPublicList (ZooomrContacts)</a><br />
+    <a href="classes/ZooomrContacts.html#M000030">getPublicList (ZooomrContacts)</a><br />
+    <a href="classes/ZooomrPhotos.html#M000114">getRecent (ZooomrPhotos)</a><br />
+    <a href="classes/ZooomrPhotos.html#M000127">getRecent (ZooomrPhotos)</a><br />
+    <a href="classes/ZooomrPhotos.html#M000121">getSizes (ZooomrPhotos)</a><br />
+    <a href="classes/ZooomrPhotos.html#M000108">getSizes (ZooomrPhotos)</a><br />
+    <a href="classes/ZooomrAuth.html#M000033">getToken (ZooomrAuth)</a><br />
+    <a href="classes/ZooomrAuth.html#M000037">getToken (ZooomrAuth)</a><br />
+    <a href="classes/ZooomrPeople.html#M000173">getUploadStatus (ZooomrPeople)</a><br />
+    <a href="classes/ZooomrPeople.html#M000178">getUploadStatus (ZooomrPeople)</a><br />
+    <a href="classes/ZooomrPhotos.html#M000113">getinfo (ZooomrPhotos)</a><br />
+    <a href="classes/ZooomrPhotos.html#M000126">getinfo (ZooomrPhotos)</a><br />
+    <a href="classes/ZooomrResponse.html#M000080">is_equal (ZooomrResponse)</a><br />
+    <a href="classes/ZooomrResponse.html#M000086">is_equal (ZooomrResponse)</a><br />
+    <a href="classes/ZooomrTest.html#M000074">login (ZooomrTest)</a><br />
+    <a href="classes/ZooomrTest.html#M000071">login (ZooomrTest)</a><br />
+    <a href="classes/ZooomrPhotosTransform.html#M000139">new (ZooomrPhotosTransform)</a><br />
+    <a href="classes/ZooomrPhotosetsRuleSetViews.html#M000184">new (ZooomrPhotosetsRuleSetViews)</a><br />
+    <a href="classes/ZooomrPhotosetsRuleSetViews.html#M000183">new (ZooomrPhotosetsRuleSetViews)</a><br />
+    <a href="classes/ZooomrRestAPI.html#M000087">new (ZooomrRestAPI)</a><br />
+    <a href="classes/ZooomrActivity.html#M000181">new (ZooomrActivity)</a><br />
+    <a href="classes/ZooomrActivity.html#M000179">new (ZooomrActivity)</a><br />
+    <a href="classes/ZooomrPhotosetsRuleSetPeopleTags.html#M000105">new (ZooomrPhotosetsRuleSetPeopleTags)</a><br />
+    <a href="classes/ZooomrPhotosetsRuleSetPeopleTags.html#M000106">new (ZooomrPhotosetsRuleSetPeopleTags)</a><br />
+    <a href="classes/ZooomrPhotos.html#M000107">new (ZooomrPhotos)</a><br />
+    <a href="classes/ZooomrResponse.html#M000081">new (ZooomrResponse)</a><br />
+    <a href="classes/ZooomrResponse.html#M000075">new (ZooomrResponse)</a><br />
+    <a href="classes/ZooomrTest.html#M000072">new (ZooomrTest)</a><br />
+    <a href="classes/ZooomrTest.html#M000069">new (ZooomrTest)</a><br />
+    <a href="classes/ZooomrPhotosetsRuleSetDateUploaded.html#M000002">new (ZooomrPhotosetsRuleSetDateUploaded)</a><br />
+    <a href="classes/ZooomrUpload.html#M000067">new (ZooomrUpload)</a><br />
+    <a href="classes/ZooomrTags.html#M000003">new (ZooomrTags)</a><br />
+    <a href="classes/ZooomrPhotosetsRuleSetDateUploaded.html#M000001">new (ZooomrPhotosetsRuleSetDateUploaded)</a><br />
+    <a href="classes/ZooomrTags.html#M000006">new (ZooomrTags)</a><br />
+    <a href="classes/ZooomrPeople.html#M000174">new (ZooomrPeople)</a><br />
+    <a href="classes/ZooomrPhotosetsRuleSetGeoTags.html#M000009">new (ZooomrPhotosetsRuleSetGeoTags)</a><br />
+    <a href="classes/ZooomrPhotosetsRuleSetGeoTags.html#M000010">new (ZooomrPhotosetsRuleSetGeoTags)</a><br />
+    <a href="classes/ZooomrPhotos.html#M000120">new (ZooomrPhotos)</a><br />
+    <a href="classes/ZooomrPhotosetsRuleSet.html#M000153">new (ZooomrPhotosetsRuleSet)</a><br />
+    <a href="classes/ZooomrPhotosets.html#M000011">new (ZooomrPhotosets)</a><br />
+    <a href="classes/ZooomrZipline.html#M000062">new (ZooomrZipline)</a><br />
+    <a href="classes/ZooomrPhotosets.html#M000018">new (ZooomrPhotosets)</a><br />
+    <a href="classes/ZooomrZipline.html#M000059">new (ZooomrZipline)</a><br />
+    <a href="classes/ZooomrPhotosComments.html#M000054">new (ZooomrPhotosComments)</a><br />
+    <a href="classes/ZooomrPhotosComments.html#M000049">new (ZooomrPhotosComments)</a><br />
+    <a href="classes/ZooomrPeople.html#M000169">new (ZooomrPeople)</a><br />
+    <a href="classes/ZooomrContacts.html#M000025">new (ZooomrContacts)</a><br />
+    <a href="classes/ZooomrContacts.html#M000028">new (ZooomrContacts)</a><br />
+    <a href="classes/ZooomrFavorites.html#M000165">new (ZooomrFavorites)</a><br />
+    <a href="classes/ZooomrAuth.html#M000031">new (ZooomrAuth)</a><br />
+    <a href="classes/ZooomrPhotosetsRuleSetLabels.html#M000133">new (ZooomrPhotosetsRuleSetLabels)</a><br />
+    <a href="classes/ZooomrPhotosetsRuleSetLabels.html#M000134">new (ZooomrPhotosetsRuleSetLabels)</a><br />
+    <a href="classes/ZooomrPhotosetsRuleSetDateTaken.html#M000135">new (ZooomrPhotosetsRuleSetDateTaken)</a><br />
+    <a href="classes/ZooomrPhotosetsRuleSetDateTaken.html#M000136">new (ZooomrPhotosetsRuleSetDateTaken)</a><br />
+    <a href="classes/ZooomrPhotosTransform.html#M000137">new (ZooomrPhotosTransform)</a><br />
+    <a href="classes/ZooomrAuth.html#M000035">new (ZooomrAuth)</a><br />
+    <a href="classes/ZooomrRestAPI.html#M000096">new (ZooomrRestAPI)</a><br />
+    <a href="classes/ZooomrFavorites.html#M000161">new (ZooomrFavorites)</a><br />
+    <a href="classes/ZooomrPhotosNotes.html#M000141">new (ZooomrPhotosNotes)</a><br />
+    <a href="classes/ZooomrPhotosetsRuleSetBase.html#M000160">new (ZooomrPhotosetsRuleSetBase)</a><br />
+    <a href="classes/ZooomrPhotosetsRuleSetBase.html#M000159">new (ZooomrPhotosetsRuleSetBase)</a><br />
+    <a href="classes/ZooomrPhotosGeo.html#M000046">new (ZooomrPhotosGeo)</a><br />
+    <a href="classes/ZooomrPhotosNotes.html#M000145">new (ZooomrPhotosNotes)</a><br />
+    <a href="classes/ZooomrGroups.html#M000039">new (ZooomrGroups)</a><br />
+    <a href="classes/ZooomrPhotosetsRuleSet.html#M000156">new (ZooomrPhotosetsRuleSet)</a><br />
+    <a href="classes/ZooomrPhotosGeo.html#M000043">new (ZooomrPhotosGeo)</a><br />
+    <a href="classes/ZooomrPhotosLicense.html#M000149">new (ZooomrPhotosLicense)</a><br />
+    <a href="classes/ZooomrGroups.html#M000041">new (ZooomrGroups)</a><br />
+    <a href="classes/ZooomrPhotosLicense.html#M000151">new (ZooomrPhotosLicense)</a><br />
+    <a href="classes/ZooomrUpload.html#M000065">new (ZooomrUpload)</a><br />
+    <a href="classes/ZooomrRestAPI.html#M000095">params_are_valid (ZooomrRestAPI)</a><br />
+    <a href="classes/ZooomrRestAPI.html#M000094">params_are_valid (ZooomrRestAPI)</a><br />
+    <a href="classes/ZooomrPhotosetsRuleSet.html#M000155">params_are_valid (ZooomrPhotosetsRuleSet)</a><br />
+    <a href="classes/ZooomrRestAPI.html#M000103">params_are_valid (ZooomrRestAPI)</a><br />
+    <a href="classes/ZooomrPhotosetsRuleSet.html#M000158">params_are_valid (ZooomrPhotosetsRuleSet)</a><br />
+    <a href="classes/ZooomrRestAPI.html#M000104">params_are_valid (ZooomrRestAPI)</a><br />
+    <a href="classes/ZooomrZipline.html#M000060">postLine (ZooomrZipline)</a><br />
+    <a href="classes/ZooomrZipline.html#M000063">postLine (ZooomrZipline)</a><br />
+    <a href="classes/ZooomrPhotos.html#M000115">recentlyUpdated (ZooomrPhotos)</a><br />
+    <a href="classes/ZooomrPhotos.html#M000128">recentlyUpdated (ZooomrPhotos)</a><br />
+    <a href="classes/ZooomrFavorites.html#M000168">remove (ZooomrFavorites)</a><br />
+    <a href="classes/ZooomrFavorites.html#M000164">remove (ZooomrFavorites)</a><br />
+    <a href="classes/ZooomrPhotosGeo.html#M000044">removeLocation (ZooomrPhotosGeo)</a><br />
+    <a href="classes/ZooomrPhotosGeo.html#M000047">removeLocation (ZooomrPhotosGeo)</a><br />
+    <a href="classes/ZooomrPhotos.html#M000129">removeTag (ZooomrPhotos)</a><br />
+    <a href="classes/ZooomrPhotos.html#M000116">removeTag (ZooomrPhotos)</a><br />
+    <a href="classes/ZooomrPhotosTransform.html#M000138">rotate (ZooomrPhotosTransform)</a><br />
+    <a href="classes/ZooomrPhotosTransform.html#M000140">rotate (ZooomrPhotosTransform)</a><br />
+    <a href="classes/ZooomrPhotos.html#M000130">search (ZooomrPhotos)</a><br />
+    <a href="classes/ZooomrPhotos.html#M000117">search (ZooomrPhotos)</a><br />
+    <a href="classes/ZooomrPhotosLicense.html#M000150">setLicense (ZooomrPhotosLicense)</a><br />
+    <a href="classes/ZooomrPhotosLicense.html#M000152">setLicense (ZooomrPhotosLicense)</a><br />
+    <a href="classes/ZooomrPhotosGeo.html#M000045">setLocation (ZooomrPhotosGeo)</a><br />
+    <a href="classes/ZooomrPhotosGeo.html#M000048">setLocation (ZooomrPhotosGeo)</a><br />
+    <a href="classes/ZooomrPhotos.html#M000131">setMeta (ZooomrPhotos)</a><br />
+    <a href="classes/ZooomrPhotos.html#M000118">setMeta (ZooomrPhotos)</a><br />
+    <a href="classes/ZooomrPhotos.html#M000119">setPerms (ZooomrPhotos)</a><br />
+    <a href="classes/ZooomrPhotos.html#M000132">setPerms (ZooomrPhotos)</a><br />
+    <a href="classes/ZooomrUpload.html#M000068">uploadPhoto (ZooomrUpload)</a><br />
+    <a href="classes/ZooomrUpload.html#M000066">uploadPhoto (ZooomrUpload)</a><br />
+    <a href="classes/ZooomrActivity.html#M000182">userPhotos (ZooomrActivity)</a><br />
+    <a href="classes/ZooomrActivity.html#M000180">userPhotos (ZooomrActivity)</a><br />
+  </div>
+</div>
+</body>
+</html>

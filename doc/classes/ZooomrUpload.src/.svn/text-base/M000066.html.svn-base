@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>uploadPhoto (ZooomrUpload)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File svn/ruby-zooomr-api/Zooomr.Upload.rb, line 36</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">uploadPhoto</span>(<span class="ruby-identifier">a_parameters_hash</span>)
+    
+    <span class="ruby-identifier">required_params</span> = [ <span class="ruby-value str">'filename'</span>, <span class="ruby-value str">'auth_token'</span>]
+    <span class="ruby-identifier">optional_params</span> = [ <span class="ruby-value str">'title'</span>, <span class="ruby-value str">'description'</span>, <span class="ruby-value str">'tags'</span>, <span class="ruby-value str">'is_public'</span>, <span class="ruby-value str">'is_friend'</span>, <span class="ruby-value str">'is_family'</span>, <span class="ruby-value str">'safety_level'</span>, <span class="ruby-value str">'content_type'</span>, <span class="ruby-value str">'hidden'</span>]
+    
+    <span class="ruby-identifier">params</span> = {  <span class="ruby-value str">'api_key'</span>         =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@zooomr</span>.<span class="ruby-identifier">api_key</span>,
+                <span class="ruby-value str">'format'</span>          =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'json'</span>,
+                <span class="ruby-value str">'nojsoncallback'</span>  =<span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span>,
+             }
+    
+    <span class="ruby-identifier">file</span>              = <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-identifier">a_filename</span>).<span class="ruby-identifier">binmode</span> <span class="ruby-comment cmt">#photo data</span>
+    
+    <span class="ruby-identifier">a_parameters_hash</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-value str">'filename'</span>)
+    
+    <span class="ruby-ivar">@zooomr</span>.<span class="ruby-identifier">params_are_valid</span>(<span class="ruby-identifier">required_params</span>, <span class="ruby-identifier">optional_params</span>, <span class="ruby-identifier">a_parameter_hash</span>)
+    
+    <span class="ruby-keyword kw">if</span> (<span class="ruby-identifier">a_parameter_hash</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-value str">'tags'</span>))
+      <span class="ruby-keyword kw">if</span> (<span class="ruby-operator">!</span>(<span class="ruby-identifier">a_parameter_hash</span>[<span class="ruby-value str">'tags'</span>].<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Array</span>)))
+        <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-value str">&quot;Upload:: tags should be an array!&quot;</span>, <span class="ruby-identifier">caller</span>
+      <span class="ruby-keyword kw">end</span> 
+    <span class="ruby-keyword kw">end</span>
+    
+    <span class="ruby-identifier">ascii_url</span> = <span class="ruby-value str">'http://upload.zooomr.com/services/upload/'</span>
+    
+    <span class="ruby-comment cmt"># create the post request</span>
+    <span class="ruby-identifier">post_boundary</span> = <span class="ruby-value str">&quot;---------------------------7d44e178b0434&quot;</span>
+    <span class="ruby-identifier">post_data</span>     = <span class="ruby-value str">&quot;&quot;</span>
+    <span class="ruby-identifier">params</span>.<span class="ruby-identifier">sort</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">post_data</span> <span class="ruby-operator">+=</span> <span class="ruby-value str">&quot;--&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">post_boundary</span> <span class="ruby-operator">+</span> <span class="ruby-value str">&quot;\r\n&quot;</span>
+      <span class="ruby-identifier">post_data</span> <span class="ruby-operator">+=</span> <span class="ruby-value str">&quot;Content-Disposition: form-data; name=\&quot;&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">key</span> <span class="ruby-operator">+</span> <span class="ruby-value str">&quot;\&quot;\r\n\r\n&quot;</span>
+      <span class="ruby-identifier">post_data</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">+</span> <span class="ruby-value str">&quot;\r\n&quot;</span>
+    <span class="ruby-keyword kw">end</span>
+     
+    <span class="ruby-identifier">api_sig</span>           = <span class="ruby-ivar">@zooomr</span>.<span class="ruby-identifier">create_signature</span>(<span class="ruby-identifier">params</span>)
+    <span class="ruby-identifier">params</span>[<span class="ruby-value str">'api_sig'</span>] = <span class="ruby-identifier">api_sig</span>
+    <span class="ruby-identifier">params</span>[<span class="ruby-value str">'photo'</span>]   = <span class="ruby-identifier">file</span>.<span class="ruby-identifier">read</span>
+    
+    <span class="ruby-identifier">post_data</span> <span class="ruby-operator">+=</span> <span class="ruby-value str">&quot;--&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">post_boundary</span> <span class="ruby-operator">+</span> <span class="ruby-value str">&quot;\r\n&quot;</span>
+    <span class="ruby-identifier">post_data</span> <span class="ruby-operator">+=</span> <span class="ruby-value str">&quot;Content-Disposition: form-data; name=\&quot;api_sig\&quot;\r\n\r\n&quot;</span>
+    <span class="ruby-identifier">post_data</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">api_sig</span> <span class="ruby-operator">+</span> <span class="ruby-value str">&quot;\r\n&quot;</span>
+
+    <span class="ruby-comment cmt"># add the photo data</span>
+    <span class="ruby-identifier">post_data</span> <span class="ruby-operator">+=</span> <span class="ruby-value str">&quot;--&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">post_boundary</span> <span class="ruby-operator">+</span> <span class="ruby-value str">&quot;\r\n&quot;</span>
+    <span class="ruby-identifier">post_data</span> <span class="ruby-operator">+=</span> <span class="ruby-value str">&quot;Content-Disposition: form-data; name=\&quot;photo\&quot;; filename=\&quot;&quot;</span><span class="ruby-operator">+</span><span class="ruby-identifier">a_filename</span><span class="ruby-operator">+</span><span class="ruby-value str">&quot;\&quot;\r\n&quot;</span>
+    <span class="ruby-identifier">post_data</span> <span class="ruby-operator">+=</span> <span class="ruby-value str">&quot;Content-Transfer-Encoding: binary\r\n&quot;</span>
+    <span class="ruby-identifier">post_data</span> <span class="ruby-operator">+=</span> <span class="ruby-value str">&quot;Content-Type: &quot;</span>
+    <span class="ruby-identifier">post_data</span> <span class="ruby-operator">+=</span> <span class="ruby-constant">MIME</span><span class="ruby-operator">::</span><span class="ruby-constant">Types</span>.<span class="ruby-identifier">type_for</span>(<span class="ruby-identifier">a_filename</span>).<span class="ruby-identifier">to_s</span> 
+    <span class="ruby-identifier">post_data</span> <span class="ruby-operator">+=</span> <span class="ruby-value str">&quot;\r\n\r\n&quot;</span>
+    <span class="ruby-identifier">post_data</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">params</span>[<span class="ruby-value str">'photo'</span>] <span class="ruby-operator">+</span> <span class="ruby-value str">&quot;\r\n&quot;</span>
+    <span class="ruby-identifier">post_data</span> <span class="ruby-operator">+=</span> <span class="ruby-value str">&quot;--&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">post_boundary</span> <span class="ruby-operator">+</span> <span class="ruby-value str">&quot;--&quot;</span>
+    
+    <span class="ruby-identifier">url</span> = <span class="ruby-constant">URI</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">ascii_url</span>)
+    <span class="ruby-identifier">http</span> = <span class="ruby-constant">Net</span><span class="ruby-operator">::</span><span class="ruby-constant">HTTP</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">url</span>.<span class="ruby-identifier">host</span>)
+    <span class="ruby-identifier">response</span>, <span class="ruby-identifier">body</span> = <span class="ruby-identifier">http</span>.<span class="ruby-identifier">post</span>(<span class="ruby-identifier">url</span>.<span class="ruby-identifier">path</span>,
+                               <span class="ruby-identifier">post_data</span>,                                   
+                              {<span class="ruby-value str">'Content-type'</span>=<span class="ruby-operator">&gt;</span><span class="ruby-value str">'multipart/form-data; boundary='</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">post_boundary</span>})
+    
+    <span class="ruby-identifier">puts</span> <span class="ruby-value str">&quot;RESPONSE: &quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">body</span>
+    
+    <span class="ruby-comment cmt">#  jsonZooomrApi({&quot;ticket&quot;: {&quot;_content&quot;: &quot;1vl8zc-15k-50N-2M-3b-16d2Hjj1y&quot;}, &quot;stat&quot;: &quot;ok&quot;, &quot;photoid&quot;: {&quot;_content&quot;: 4808881}, &quot;secret&quot;: {&quot;_content&quot;: &quot;9a472d5d15&quot;}});</span>
+    <span class="ruby-identifier">body</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp re">/jsonZooomrApi\((.*?)\);/</span>
+    <span class="ruby-identifier">body_without_callback</span> = <span class="ruby-identifier">$1</span>
+    <span class="ruby-identifier">resp_hash</span> = <span class="ruby-constant">JSON</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">body_without_callback</span>)
+
+    <span class="ruby-keyword kw">return</span> <span class="ruby-constant">ZooomrResponse</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">resp_hash</span>)
+  <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>create (ZooomrPhotosets)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File svn/ruby-zooomr-api/Zooomr.Photosets.rb, line 32</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">create</span>(<span class="ruby-identifier">a_parameter_hash</span>)
+    
+    <span class="ruby-identifier">required_params</span> = [<span class="ruby-value str">'title'</span>, <span class="ruby-value str">'description'</span>, <span class="ruby-value str">'primary_photo_id'</span>, <span class="ruby-value str">'ruleset'</span>, <span class="ruby-value str">'context'</span>, <span class="ruby-value str">'sortmode'</span>, <span class="ruby-value str">'auth_token'</span>]
+    
+    <span class="ruby-ivar">@zooomr</span>.<span class="ruby-identifier">params_are_valid</span>(<span class="ruby-identifier">required_params</span>, <span class="ruby-keyword kw">nil</span>, <span class="ruby-identifier">a_parameter_hash</span>)
+    
+    <span class="ruby-keyword kw">if</span> (<span class="ruby-operator">!</span>(<span class="ruby-identifier">a_parameter_hash</span>[<span class="ruby-value str">'ruleset'</span>].<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">ZooomrPhotosetsRuleSet</span>)))
+      <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-value str">&quot;ZooomrPhotosets.create:: ruleset should be a ZooomrPhotosetsRuleSet object!&quot;</span>, <span class="ruby-identifier">caller</span>
+    <span class="ruby-keyword kw">end</span>
+    
+    <span class="ruby-comment cmt"># build the ruleset</span>
+    <span class="ruby-identifier">rules</span> = <span class="ruby-value str">&quot;&quot;</span>
+    <span class="ruby-identifier">rule_array</span> = <span class="ruby-identifier">a_parameter_hash</span>[<span class="ruby-value str">'ruleset'</span>].<span class="ruby-identifier">rule_array</span>
+    
+    <span class="ruby-identifier">rule_array</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">rule</span><span class="ruby-operator">|</span>
+      <span class="ruby-keyword kw">unless</span>(<span class="ruby-identifier">rule</span>.<span class="ruby-identifier">nil?</span>)
+        <span class="ruby-identifier">rules</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">rule</span>.<span class="ruby-identifier">match_type</span> <span class="ruby-operator">+</span> <span class="ruby-value str">&quot;|&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">rule</span>.<span class="ruby-identifier">match_args</span> <span class="ruby-operator">+</span> <span class="ruby-value str">&quot;|&quot;</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">rule</span>.<span class="ruby-identifier">match_test</span> <span class="ruby-operator">+</span> <span class="ruby-value str">&quot;\n&quot;</span>
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span>
+    
+    <span class="ruby-identifier">method</span> = <span class="ruby-value str">'zooomr.photosets.create'</span>
+    
+    <span class="ruby-identifier">a_parameter_hash</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-value str">'ruleset'</span>)
+    
+    <span class="ruby-identifier">params</span> = {  <span class="ruby-value str">'api_key'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@zooomr</span>.<span class="ruby-identifier">api_key</span>,
+                <span class="ruby-value str">'rules'</span>   =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">rules</span>}
+    
+    <span class="ruby-identifier">params</span> = <span class="ruby-identifier">params</span>.<span class="ruby-identifier">merge</span>(<span class="ruby-identifier">a_parameter_hash</span>)
+    
+    <span class="ruby-keyword kw">return</span> <span class="ruby-ivar">@zooomr</span>.<span class="ruby-identifier">call_post_method</span>(<span class="ruby-identifier">method</span>, <span class="ruby-identifier">params</span>)
+  <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

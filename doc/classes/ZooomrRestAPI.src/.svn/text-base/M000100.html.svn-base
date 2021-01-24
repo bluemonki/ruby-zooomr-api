@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>authenticate_application (ZooomrRestAPI)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File Zooomr.rb, line 188</span>
+        <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">authenticate_application</span>(<span class="ruby-identifier">a_parameter_hash</span>)
+        
+          <span class="ruby-identifier">required_params</span> = [<span class="ruby-value str">'perms'</span>]
+    
+    <span class="ruby-identifier">params_are_valid</span>(<span class="ruby-identifier">required_params</span>, <span class="ruby-keyword kw">nil</span>, <span class="ruby-identifier">a_parameter_hash</span>)
+    
+    <span class="ruby-identifier">response</span> = <span class="ruby-identifier">auth</span>.<span class="ruby-identifier">getFrob</span>()
+    
+    <span class="ruby-keyword kw">if</span> (<span class="ruby-keyword kw">false</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">response</span>)
+      
+      <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">response</span>
+    
+    <span class="ruby-keyword kw">else</span>
+      
+      <span class="ruby-identifier">json</span> = <span class="ruby-identifier">response</span>.<span class="ruby-identifier">json_response</span>
+      <span class="ruby-identifier">frob</span> = <span class="ruby-identifier">json</span>[<span class="ruby-value str">'frob'</span>]
+      
+      <span class="ruby-identifier">params</span> = { <span class="ruby-value str">'frob'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">frob</span> }
+      <span class="ruby-identifier">params</span> = <span class="ruby-identifier">params</span>.<span class="ruby-identifier">merge</span>(<span class="ruby-identifier">a_parameter_hash</span>)
+      
+      <span class="ruby-identifier">link</span> = <span class="ruby-identifier">create_login_link</span>(<span class="ruby-identifier">params</span>)
+      <span class="ruby-keyword kw">return</span> {<span class="ruby-value str">'frob'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">frob</span>, <span class="ruby-value str">'link'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">link</span>}
+    
+    <span class="ruby-keyword kw">end</span>
+        <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

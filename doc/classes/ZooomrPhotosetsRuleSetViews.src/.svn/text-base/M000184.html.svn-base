@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>new (ZooomrPhotosetsRuleSetViews)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File Zooomr.Photosets.RuleSet.Views.rb, line 25</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">a_parameter_hash</span>)
+    
+    <span class="ruby-identifier">required_params</span> = [<span class="ruby-value str">'match_test'</span>, <span class="ruby-value str">'views'</span>]
+    
+    <span class="ruby-constant">ZooomrPhotosetsRuleSet</span>.<span class="ruby-identifier">params_are_valid</span>(<span class="ruby-identifier">required_params</span>, <span class="ruby-keyword kw">nil</span>, <span class="ruby-identifier">a_parameter_hash</span>)
+    
+    <span class="ruby-keyword kw">unless</span> (
+              (<span class="ruby-identifier">a_parameter_hash</span>[<span class="ruby-value str">'match_test'</span>] <span class="ruby-operator">==</span> <span class="ruby-constant">ZooomrPhotosetsRuleSetViews</span><span class="ruby-operator">::</span><span class="ruby-constant">EQUALTO</span>) <span class="ruby-keyword kw">or</span>
+              (<span class="ruby-identifier">a_parameter_hash</span>[<span class="ruby-value str">'match_test'</span>] <span class="ruby-operator">==</span> <span class="ruby-constant">ZooomrPhotosetsRuleSetViews</span><span class="ruby-operator">::</span><span class="ruby-constant">NOTEQUALTO</span>) <span class="ruby-keyword kw">or</span>
+              (<span class="ruby-identifier">a_parameter_hash</span>[<span class="ruby-value str">'match_test'</span>] <span class="ruby-operator">==</span> <span class="ruby-constant">ZooomrPhotosetsRuleSetViews</span><span class="ruby-operator">::</span><span class="ruby-constant">GREATERTHAN</span>) <span class="ruby-keyword kw">or</span>
+              (<span class="ruby-identifier">a_parameter_hash</span>[<span class="ruby-value str">'match_test'</span>] <span class="ruby-operator">==</span> <span class="ruby-constant">ZooomrPhotosetsRuleSetViews</span><span class="ruby-operator">::</span><span class="ruby-constant">LESSTHAN</span>)
+            )
+        <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-value str">&quot;ZooomrPhotosetsRuleSetView: a_match constant not a recognised value&quot;</span>, <span class="ruby-identifier">caller</span>
+      <span class="ruby-keyword kw">end</span>
+      
+    <span class="ruby-ivar">@match_test</span> = <span class="ruby-identifier">a_parameter_hash</span>[<span class="ruby-value str">'match_test'</span>]
+    <span class="ruby-ivar">@match_type</span> = <span class="ruby-constant">ZooomrPhotosetsRuleSet</span><span class="ruby-operator">::</span><span class="ruby-constant">PHOTOSETMATCH_VIEWS</span>
+    <span class="ruby-ivar">@match_args</span> = <span class="ruby-identifier">a_parameter_hash</span>[<span class="ruby-value str">'views'</span>]
+  <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

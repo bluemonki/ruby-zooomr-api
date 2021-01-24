@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>recentlyUpdated (ZooomrPhotos)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File Zooomr.Photos.rb, line 197</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">recentlyUpdated</span>(<span class="ruby-identifier">a_parameter_hash</span>)
+    
+    <span class="ruby-identifier">required_params</span> = [<span class="ruby-value str">'min_date'</span>, <span class="ruby-value str">'auth_token'</span>]
+    <span class="ruby-identifier">optional_params</span> = [<span class="ruby-value str">'extras'</span>, <span class="ruby-value str">'page'</span>, <span class="ruby-value str">'per_page'</span>]
+    
+    <span class="ruby-ivar">@zooomr</span>.<span class="ruby-identifier">params_are_valid</span>(<span class="ruby-identifier">required_params</span>, <span class="ruby-identifier">optional_params</span>, <span class="ruby-identifier">a_parameter_hash</span>)
+    
+    <span class="ruby-identifier">params</span> = {  <span class="ruby-value str">'api_key'</span>     =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@zooomr</span>.<span class="ruby-identifier">api_key</span> }
+    
+    <span class="ruby-keyword kw">if</span> (<span class="ruby-operator">!</span>(<span class="ruby-identifier">a_parameter_hash</span>[<span class="ruby-value str">'min_date'</span>].<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">DateTime</span>)))
+      <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-value str">&quot;zooomr.photos.recentlyUpdated requires a DateTime object for min_date&quot;</span>, <span class="ruby-identifier">caller</span>
+    <span class="ruby-keyword kw">end</span>
+  
+    <span class="ruby-identifier">unixtime</span> = <span class="ruby-constant">Time</span>.<span class="ruby-identifier">local</span>(<span class="ruby-identifier">a_parameter_hash</span>[<span class="ruby-value str">'min_date'</span>].<span class="ruby-identifier">year</span>,
+                           <span class="ruby-identifier">a_parameter_hash</span>[<span class="ruby-value str">'min_date'</span>].<span class="ruby-identifier">mon</span>,
+                           <span class="ruby-identifier">a_parameter_hash</span>[<span class="ruby-value str">'min_date'</span>].<span class="ruby-identifier">mday</span>,
+                           <span class="ruby-identifier">a_parameter_hash</span>[<span class="ruby-value str">'min_date'</span>].<span class="ruby-identifier">hour</span>,
+                           <span class="ruby-identifier">a_parameter_hash</span>[<span class="ruby-value str">'min_date'</span>].<span class="ruby-identifier">min</span>,
+                           <span class="ruby-identifier">a_parameter_hash</span>[<span class="ruby-value str">'min_date'</span>].<span class="ruby-identifier">sec</span>,
+                           <span class="ruby-identifier">a_parameter_hash</span>[<span class="ruby-value str">'min_date'</span>].<span class="ruby-identifier">sec_fraction</span>)
+
+    <span class="ruby-identifier">a_parameter_hash</span>[<span class="ruby-value str">'min_date'</span>] = <span class="ruby-identifier">unixtime</span>.<span class="ruby-identifier">to_i</span>.<span class="ruby-identifier">to_s</span>
+    
+    <span class="ruby-identifier">params</span> = <span class="ruby-identifier">params</span>.<span class="ruby-identifier">merge</span>(<span class="ruby-identifier">a_parameter_hash</span>)
+    
+    <span class="ruby-identifier">method</span> = <span class="ruby-value str">'zooomr.photos.recentlyUpdated'</span>
+    
+    <span class="ruby-keyword kw">return</span> <span class="ruby-ivar">@zooomr</span>.<span class="ruby-identifier">call_method</span>(<span class="ruby-identifier">method</span>, <span class="ruby-identifier">params</span>)
+  <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

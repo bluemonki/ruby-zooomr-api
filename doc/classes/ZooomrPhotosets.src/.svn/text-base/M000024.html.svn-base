@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>getPhotos (ZooomrPhotosets)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File Zooomr.Photosets.rb, line 177</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">getPhotos</span>(<span class="ruby-identifier">a_parameter_hash</span>)
+    <span class="ruby-identifier">method</span> = <span class="ruby-value str">'zooomr.photosets.getPhotos'</span>
+    
+    <span class="ruby-identifier">required_params</span> = [<span class="ruby-value str">'photoset_id'</span>]
+    <span class="ruby-identifier">optional_params</span> = [<span class="ruby-value str">'page'</span>, <span class="ruby-value str">'per_page'</span>]
+    
+    <span class="ruby-ivar">@zooomr</span>.<span class="ruby-identifier">params_are_valid</span>(<span class="ruby-identifier">required_params</span>, <span class="ruby-identifier">optional_params</span>, <span class="ruby-identifier">a_parameter_hash</span>)
+    
+    <span class="ruby-identifier">params</span> = {  <span class="ruby-value str">'api_key'</span>     =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@zooomr</span>.<span class="ruby-identifier">api_key</span> }
+    <span class="ruby-identifier">params</span> = <span class="ruby-identifier">params</span>.<span class="ruby-identifier">merge</span>(<span class="ruby-identifier">a_parameter_hash</span>)
+    
+    <span class="ruby-keyword kw">return</span> <span class="ruby-ivar">@zooomr</span>.<span class="ruby-identifier">call_method</span>(<span class="ruby-identifier">method</span>, <span class="ruby-identifier">params</span>)
+  <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>
